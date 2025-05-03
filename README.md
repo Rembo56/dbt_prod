@@ -1,10 +1,5 @@
-Welcome to your new dbt project!
+DBT проект для работы с Postgres базой
 
-### Using the starter project
-
-Try running the following commands:
-- dbt run
-- dbt test
 
 
 ### Resources:
