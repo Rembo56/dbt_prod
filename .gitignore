@@ -4,3 +4,7 @@ dbt_packages/
 logs/
 profiles.yml
 .user.yml
+.python-version
+.env
+.vscode
+.vscode/

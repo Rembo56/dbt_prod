@@ -1,0 +1,61 @@
+
+
+sources:
+  - name: demo_src
+    description: Данные из БД по перелетам
+    database: dbt_course
+    schema: demo_src
+    tables:
+      - name: aircrafts
+        description: Модель самолетов
+        columns:
+          - name: aircraft_code
+            description: Код модели самолета
+          - name: model
+            description: Модель самолета
+          - name: range
+            description: без описания пока-что
+
+      - name: airports
+        description: Аэропорты
+        columns:
+          - name: airport_code
+            description: Код аэропорта
+          - name: airport_name
+            description: Название аэропорта
+          - name: city 
+            description: Город аэроорта
+          - name: coordinates
+            description: Координаты аэропорта
+          - name: timezone
+            description: Таймзона
+
+      - name: seats
+        description: Места в самолетах 
+        columns:
+          - name: aircraft_code
+            description: Код аэропорта
+          - name: seat_no
+            description: Место в самолете
+          - name: fare_conditions
+            description: Класс перелета
+
+      - name: bookings
+        description: Бронирование
+        columns:
+          - name: book_ref
+            description: Код брони
+          - name: book_date
+            description: Дата брони
+          - name: total_amount
+            description: Общая сумма бронирования
+        freshness:
+          warn_after:
+            count: 600000
+            period: hour
+          error_after:
+            count: 10000
+            period: day
+          filter: current_timestamp::date - book_date::date < 30000
+        loaded_at_field: book_date::timestamp
+        
