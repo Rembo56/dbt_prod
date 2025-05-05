@@ -58,4 +58,99 @@ sources:
             period: day
           filter: current_timestamp::date - book_date::date < 30000
         loaded_at_field: book_date::timestamp
+
+
         
+      - name: boarding_passes
+        description: Посадочный талон
+        columns:
+          - name: ticket_no
+            description: Номер билета
+          - name: flight_id
+            description: ID вылета
+          - name: boarding_no
+            description: Номер борта
+          - name: seat_no
+            description: Номер места
+        freshness:
+          warn_after:
+            count: 600000
+            period: hour
+          error_after:
+            count: 10000
+            period: day
+          filter: current_timestamp::date - book_date::date < 30000
+        loaded_at_field: book_date::timestamp
+
+
+      - name: flights
+        description: Рейсы самолетов и информация по ним
+        columns:
+          - name: flight_id
+            description: ID вылета
+          - name: flight_no
+            description: Номер вылета
+          - name: scheduled_departure
+            description: Время вылета
+          - name: scheduled_arrival
+            description: Время прилета
+          - name: departure_airport
+            description: Аэропорт вылета
+          - name: departure_airport
+            description: Время прилета
+          - name: arrival_airport
+            description: Аэропорт прилета
+          - name: status
+            description: Статус рейса
+          - name: aircraft_code
+            description: Код борта
+          - name: actual_departure
+            description: Актуальное время вылета
+          - name: actual_arrival
+            description: Актуальное время прилета
+        freshness:
+          warn_after:
+            count: 600000
+            period: hour
+          error_after:
+            count: 10000
+            period: day
+          filter: current_timestamp::date - actual_departure::date < 30000
+        loaded_at_field: actual_departure::timestamp
+
+
+      - name: ticket_flights
+        description: Одна строка в таблице соответствует одному перелету
+        columns:
+          - name: ticket_no
+            description: Номер билета
+          - name: flight_id
+            description: ID вылета
+          - name: fare_conditions
+            description: Класс перелета
+          - name: amount
+            description: Цена за билет
+
+      - name: tickets
+        description: Одна строка в таблице соответствует одному перелету
+        columns:
+          - name: ticket_no
+            description: Номер билета
+          - name: book_ref
+            description: Номер брони
+          - name: passenger_id
+            description: Id пассажира
+          - name: passenger_name
+            description: Имя пассажира
+          - name: contact_data
+            description: Контакты пассажира
+
+      
+
+
+
+            
+
+
+
+
