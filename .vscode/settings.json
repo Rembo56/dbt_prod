@@ -1,0 +1,12 @@
+{
+  "python.pythonPath": "/Users/maksbolomoznov/.pyenv/versions/dbt-prod-venv/bin/python",
+  "dbt.executablePath": "/Users/maksbolomoznov/.pyenv/versions/dbt-prod-venv/bin/dbt",
+  "dbt.projectDir": "/Users/maksbolomoznov/DBT_project/dbt1/dbt_prod",
+  "dbt.venvPath": "/Users/maksbolomoznov/.pyenv/versions/dbt-prod-venv",
+  "python.analysis.extraPaths": [
+    "/Users/maksbolomoznov/.pyenv/versions/dbt-prod-venv/lib/python3.9/site-packages"
+  ],
+  "[sql]": {
+    "editor.defaultFormatter": "innoverio.vscode-dbt-power-user"
+  }
+}
