@@ -1,10 +1,7 @@
-
-
 name: 'dbt_prod'
 version: '1.0.0'
 
 profile: 'dbt_prod'
-
 
 model-paths: ["models"]
 analysis-paths: ["analyses"]
@@ -13,14 +10,11 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
 
-clean-targets:         
+clean-targets:
   - "target"
   - "dbt_packages"
 
-
-
 models:
   dbt_prod:
-    # 
     example:
       +materialized: view
