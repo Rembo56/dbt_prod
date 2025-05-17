@@ -18,3 +18,7 @@ models:
   dbt_prod:
     example:
       +materialized: view
+
+seeds:
+  dbt_prod:
+    schema: seeds
