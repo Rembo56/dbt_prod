@@ -11,3 +11,5 @@ select
     passenger_name, 
     contact_data
 from {{ ref('stg_flights__ tickets')}}
+
+where passenger_id in (select passenger_id from {{ ref('indentificat_passenger') }})

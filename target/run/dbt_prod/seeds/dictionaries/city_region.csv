@@ -1,0 +1,12 @@
+
+    
+    
+    truncate table "dbt_course"."bookings_dbt_seeds"."city_region";
+    -- dbt seed --
+    
+          insert into "dbt_course"."bookings_dbt_seeds"."city_region" ("city", "region") values
+          (%s,%s),(%s,%s),(%s,%s),(%s,%s),(%s,%s),(%s,%s)
+      
+
+;
+  
