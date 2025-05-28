@@ -1,43 +1,17 @@
 
+      update "dbt_course"."snapshot"."dim_flights__seats"
+    set dbt_effective_date_to = DBT_INTERNAL_SOURCE.dbt_effective_date_to
+    from "dim_flights__seats__dbt_tmp175736708188" as DBT_INTERNAL_SOURCE
+    where DBT_INTERNAL_SOURCE.dbt_scd_id::text = "dbt_course"."snapshot"."dim_flights__seats".dbt_scd_id::text
+      and DBT_INTERNAL_SOURCE.dbt_change_type::text in ('update'::text, 'delete'::text)
       
-  
-    
-
-  create  table "dbt_course"."snapshot"."dim_flights__seats"
-  
-  
-    as
-  
-  (
-    
-    
-
-    select *,
-        md5(coalesce(cast(concat(aircraft_code, '-', seat_no) as varchar ), '')
-         || '|' || coalesce(cast(now()::timestamp without time zone as varchar ), '')
-        ) as dbt_scd_id,
-        now()::timestamp without time zone as dbt_updated_at,
-        now()::timestamp without time zone as dbt_effective_date_from,
-        
-  
-  coalesce(nullif(now()::timestamp without time zone, now()::timestamp without time zone), '9999-01-01'::date)
-  as dbt_effective_date_to
-from (
-        
+        and ("dbt_course"."snapshot"."dim_flights__seats".dbt_effective_date_to = '9999-01-01'::date or "dbt_course"."snapshot"."dim_flights__seats".dbt_effective_date_to is null);
+      
 
 
+    insert into "dbt_course"."snapshot"."dim_flights__seats" ("aircraft_code", "seat_no", "fare_conditions", "dbt_updated_at", "dbt_effective_date_from", "dbt_effective_date_to", "dbt_scd_id")
+    select DBT_INTERNAL_SOURCE."aircraft_code",DBT_INTERNAL_SOURCE."seat_no",DBT_INTERNAL_SOURCE."fare_conditions",DBT_INTERNAL_SOURCE."dbt_updated_at",DBT_INTERNAL_SOURCE."dbt_effective_date_from",DBT_INTERNAL_SOURCE."dbt_effective_date_to",DBT_INTERNAL_SOURCE."dbt_scd_id"
+    from "dim_flights__seats__dbt_tmp175736708188" as DBT_INTERNAL_SOURCE
+    where DBT_INTERNAL_SOURCE.dbt_change_type::text = 'insert'::text;
 
-
-select
-    aircraft_code, 
-    seat_no, 
-    fare_conditions
-from "dbt_course"."bookings_dbt"."stg_flights__seats"
-
-    ) sbq
-
-
-
-  );
-  
   

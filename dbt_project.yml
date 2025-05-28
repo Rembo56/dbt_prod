@@ -16,8 +16,21 @@ clean-targets:
 
 models:
   dbt_prod:
-    example:
-      +materialized: view
+    intermediate:
+      +meta:
+        tags: "intermediate"
+      flights:
+        +meta:
+          owner: "dbt_prod_yml@gmail.com"
+          year_created: 2025
+
+    staging:
+      +meta:
+        tags: "staging"
+          
+
+
+
 
 seeds:
   dbt_prod:

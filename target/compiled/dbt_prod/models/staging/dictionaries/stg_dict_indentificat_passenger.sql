@@ -5,4 +5,4 @@ select
 
     passenger_id
    
-from "dbt_course"."bookings_dbt"."indentificat_passenger"
+from "dbt_course"."bookings_dbt_seeds"."indentificat_passenger"

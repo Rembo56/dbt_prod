@@ -9,16 +9,21 @@ models:
     - v: 1
    config:
       contract: {enforced: true}
-   meta:
-    owner: "bolomozhnov@gmail.com"
-    contact_tg: Orenrembo56
-    status: in_dev
-
+      meta:
+        {owner: "yml_file_owner@gmail.com", status: in_dev, my_meta: new}
+        
+   
    columns: 
     - name: book_ref
+      description: Идентификатор бронирования
       data_type: bpchar(6)
       constraints:
         - type: not_null 
+      tags:
+        - "fact"
+        - "flights"
+      tests: [not_null, unique]
+    
 
     - name: book_date
       data_type: timestamptz

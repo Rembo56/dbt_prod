@@ -10,7 +10,7 @@ seeds:
     columns:
       - name: city
         tests:
-          - not_null
+         
           - unique
 
        

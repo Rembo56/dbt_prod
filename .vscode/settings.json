@@ -8,5 +8,6 @@
   ],
   "[sql]": {
     "editor.defaultFormatter": "innoverio.vscode-dbt-power-user"
-  }
+  },
+  "dbt.perspectiveTheme": "Vintage"
 }
