@@ -13,9 +13,11 @@ from
 {% endif %}
 
 select 
+
     {% for aircrafts in important_aircrafts %}
-    sum(case when aircraft_code = '{{ aircrafts }}' then 1 else 0 end) as flights_{{ aircrafts }}
+    sum(case when aircraft_code = '{{ aircrafts }}' then 1 else 0 end) as flights_{{ aircrafts|title|replace('319', 'opa') }}
     {%- if not loop.last %},{% endif %}
+    -- {{ loop.nextitem }}
 
     {%- endfor %}
 
