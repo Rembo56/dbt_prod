@@ -10,3 +10,4 @@ dbt_prod:
       type: postgres
       user: postgres
   target: dev
+
