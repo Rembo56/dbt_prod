@@ -1,2 +1,5 @@
 
 profiles.yml
+# DBT artifacts
+target/
+logs/
