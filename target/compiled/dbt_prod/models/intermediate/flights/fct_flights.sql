@@ -10,5 +10,7 @@ select
     status,
     aircraft_code,
     actual_departure, 
-    actual_arrival
+    actual_arrival,
+    flight_id  || ', ' || flight_no  as flight_info
+
 from "dbt_course"."bookings_dbt"."src_flights__flights"

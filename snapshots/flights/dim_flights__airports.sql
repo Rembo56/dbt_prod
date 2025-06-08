@@ -1,31 +1,27 @@
-{% snapshot dim_flights__airports %}
+{% snapshot dim_fligths__airports %}
 
 {{
-   config(
-       
-       target_schema='snapshot',
-       unique_key='airport_code',
+    config(
+        target_schema='snapshot',
+        unique_key='airport_code',
 
-       strategy='check',
-       check_cols=['airport_name', 'city', 'coordinates', 'timezone'],
-       dbt_valid_to_current="'9999-01-01'::date",
+        strategy='check',
+        check_cols = ['airport_name', 'city', 'coordinates', 'timezone'],
 
-       snapshot_meta_column_names={
-        "dbt_valid_from": "dbt_effective_date_from",
-        "dbt_valid_to": "dbt_effective_date_to"
-      }
-    )
+        snapshot_meta_column_names={
+            "dbt_valid_from": "dbt_effective_date_from",
+            "dbt_valid_to": "dbt_effective_date_to"
+        }
+   )
 }}
 
-
-select 
+SELECT
     airport_code,
-    airport_name, 
-    city, 
-    coordinates, 
+    airport_name,
+    city,
+    coordinates,
     timezone
-
-from {{ ref('src_flights__airports') }}
-
+FROM
+    {{ ref('src_flights__airports') }}
 
 {% endsnapshot %}

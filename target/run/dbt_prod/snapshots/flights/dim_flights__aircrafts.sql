@@ -1,7 +1,7 @@
 
       update "dbt_course"."snapshot"."dim_flights__aircrafts"
     set dbt_effective_date_to = DBT_INTERNAL_SOURCE.dbt_effective_date_to
-    from "dim_flights__aircrafts__dbt_tmp175736690288" as DBT_INTERNAL_SOURCE
+    from "dim_flights__aircrafts__dbt_tmp145511425606" as DBT_INTERNAL_SOURCE
     where DBT_INTERNAL_SOURCE.dbt_scd_id::text = "dbt_course"."snapshot"."dim_flights__aircrafts".dbt_scd_id::text
       and DBT_INTERNAL_SOURCE.dbt_change_type::text in ('update'::text, 'delete'::text)
       
@@ -11,7 +11,7 @@
 
     insert into "dbt_course"."snapshot"."dim_flights__aircrafts" ("aircraft_code", "model", "range", "dbt_updated_at", "dbt_effective_date_from", "dbt_effective_date_to", "dbt_scd_id")
     select DBT_INTERNAL_SOURCE."aircraft_code",DBT_INTERNAL_SOURCE."model",DBT_INTERNAL_SOURCE."range",DBT_INTERNAL_SOURCE."dbt_updated_at",DBT_INTERNAL_SOURCE."dbt_effective_date_from",DBT_INTERNAL_SOURCE."dbt_effective_date_to",DBT_INTERNAL_SOURCE."dbt_scd_id"
-    from "dim_flights__aircrafts__dbt_tmp175736690288" as DBT_INTERNAL_SOURCE
+    from "dim_flights__aircrafts__dbt_tmp145511425606" as DBT_INTERNAL_SOURCE
     where DBT_INTERNAL_SOURCE.dbt_change_type::text = 'insert'::text;
 
   

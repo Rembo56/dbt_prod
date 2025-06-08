@@ -16,7 +16,7 @@ select
     passenger_id, 
     passenger_name, 
     contact_data
-from "dbt_course"."bookings_dbt"."stg_flights__ tickets"
+from "dbt_course"."bookings_dbt"."stg_flights__tickets"
 
 where passenger_id in (select passenger_id from "dbt_course"."bookings_dbt_seeds"."indentificat_passenger")
   );

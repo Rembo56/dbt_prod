@@ -14,6 +14,8 @@ select
     status,
     aircraft_code,
     actual_departure, 
-    actual_arrival
+    actual_arrival,
+    {{ concat_columns([ 'flight_id', 'flight_no' ]) }} as flight_info
+
 from {{ ref('src_flights__flights') }}
 

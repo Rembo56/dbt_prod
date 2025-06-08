@@ -15,6 +15,22 @@ clean-targets:
   - "dbt_packages"
 
 models:
+  +post_hook:
+
+   - |
+      create schema if not exists logs;
+      create table if not exists {{ target.database }}.logs.dbt_logs (
+        event_date timestamp,
+        event_name varchar(100),
+        node_name varchar(255)
+      );
+      insert into {{ target.database }}.logs.dbt_logs
+      (event_date, event_name, node_name)
+      values(
+        CURRENT_TIMESTAMP, 'run_model', '{{ model.name }}'
+      );
+   - "{{ check_dependencies() }}"
+  
   dbt_prod:
     intermediate:
       +meta:

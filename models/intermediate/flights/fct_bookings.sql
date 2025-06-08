@@ -7,9 +7,7 @@
     )
 }}
 
-select
-  book_ref,
-  book_date, 
-  total_amount
+select {{ show_columns_relation('src_flights__bookings') }}
+ 
 from {{ ref('src_flights__bookings')}}
 

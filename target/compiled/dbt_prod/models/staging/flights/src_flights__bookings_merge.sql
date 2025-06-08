@@ -12,3 +12,5 @@
     where 
       book_date > (select max(book_date) from "dbt_course"."demo_src"."bookings") - interval '97 day'
   
+
+  
