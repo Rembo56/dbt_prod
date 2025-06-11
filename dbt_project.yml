@@ -51,3 +51,6 @@ models:
 seeds:
   dbt_prod:
     schema: seeds
+
+
+on-run-end: "{{ dbt_project_evaluator.print_dbt_project_evaluator_issues() }}"

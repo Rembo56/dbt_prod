@@ -13,7 +13,7 @@
     
 
     merge into "dbt_course"."bookings_dbt"."src_flights__flights_merge" as DBT_INTERNAL_DEST
-        using "src_flights__flights_merge__dbt_tmp145510631138" as DBT_INTERNAL_SOURCE
+        using "src_flights__flights_merge__dbt_tmp171845289801" as DBT_INTERNAL_SOURCE
         on (
                     DBT_INTERNAL_SOURCE.flight_id = DBT_INTERNAL_DEST.flight_id
                 )

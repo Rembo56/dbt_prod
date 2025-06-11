@@ -1,0 +1,10 @@
+packages:
+  - package: dbt-labs/dbt_utils
+    version: 1.3.0
+  - package: dbt-labs/codegen
+    version: 0.13.1
+  - package: dbt-labs/dbt_project_evaluator
+    version: 1.0.1
+  - package: Datavault-UK/automate_dv
+    version: 0.11.2
+sha1_hash: 04032261219a00c2c934666d7614886c90437fa3

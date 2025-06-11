@@ -21,6 +21,8 @@ sources:
         columns:
           - name: airport_code
             description: Код аэропорта
+            tests:  
+              - dbt_utils.not_empty_string
           - name: airport_name
             description: Название аэропорта
           - name: city 
@@ -85,6 +87,9 @@ sources:
 
       - name: flights
         description: Рейсы самолетов и информация по ним
+        tests:
+            - dbt_utils.equal_rowcount:
+                compare_model: ref('fct_flights')
         columns:
           - name: flight_id
             description: ID вылета
@@ -96,8 +101,6 @@ sources:
             description: Время прилета
           - name: departure_airport
             description: Аэропорт вылета
-          - name: departure_airport
-            description: Время прилета
           - name: arrival_airport
             description: Аэропорт прилета
           - name: status
